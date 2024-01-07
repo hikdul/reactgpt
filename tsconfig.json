@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "src/presentation/layouts/.gitkee.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
