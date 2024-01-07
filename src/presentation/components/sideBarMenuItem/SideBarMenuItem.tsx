@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import { menuRoutesProps } from "../../intenfaces"
+import { menuRoutesProps } from "../../../intenfaces"
 
 export const SideBarMenuItem = ({to, title, icon, description}:menuRoutesProps) => {
   return (

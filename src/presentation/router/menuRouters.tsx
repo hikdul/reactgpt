@@ -72,11 +72,5 @@ export const menuRoutes:menuRoutesProps[] = [
     title: "Asistente",
     description: "Información del asistente",
     component: <AssistantPage />
-  },{
-    to: "/assistant2",
-    icon: "fa-solid fa-user",
-    title: "Asistente nuevo",
-    description: "Información del nada",
-    component: <AssistantPage />
-  },
+  }
 ]
