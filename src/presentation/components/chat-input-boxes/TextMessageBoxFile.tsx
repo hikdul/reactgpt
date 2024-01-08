@@ -29,12 +29,12 @@ export const TextMessageBoxFile = ({accept, onSendMessage, placeholder, disableC
                         <p className="hidden">que tochada esta maricada</p>
                 </button>
                 <input 
+                    hidden
                     type="file"
                     ref={inputFileRef}
-                     className="hidden"
-                     accept={accept}
-                     onChange={(e)=>setSelectedFile(e.target.files?.item(0))}
-                     />
+                    accept={accept}
+                    onChange={(e)=>setSelectedFile(e.target.files?.item(0))}
+                />
             </div>
             <div className="flex-grow">
                 <div className="relative w-full">
