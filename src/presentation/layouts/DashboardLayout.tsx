@@ -14,7 +14,7 @@ export const DashboardLayout = () => {
         <div className="border-gray-700 border my-3" />
 
         {
-            menuRoutes.map(opt => (<SideBarMenuItem {...opt}/>))
+            menuRoutes.map(opt => (<SideBarMenuItem key={opt.to} {...opt}/>))
         }
         
       </nav>

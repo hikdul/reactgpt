@@ -1,6 +1,7 @@
+
 import { useState } from "react"
-import { GptMessage, MyMessage, TextMessageBoxFile, TypingLoader } from "../../components"
-import { orthographyMessageProps } from "../../../intenfaces"
+import { orthographyMessageProps } from "../../intenfaces"
+import { GptMessage, MyMessage, TextMessageBox, TypingLoader } from "../components"
 
 export const OrthographyPage = () => {
   
@@ -40,9 +41,10 @@ export const OrthographyPage = () => {
 
         </div>
       </div>
-      <TextMessageBoxFile 
+      <TextMessageBox 
         onSendMessage={hanlePost} 
         placeholder="Pregunta pues!!"
+        disableCorrections
         />
 
     </div>
