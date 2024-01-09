@@ -6,6 +6,8 @@
 
 ### base
 
+basicamente aca se encuentra todas las bases de este proyecto
+
 * vite (uso como base para esta construccion)
 * React Router Dom
 * Diseño de Layout
@@ -16,10 +18,24 @@
 * Diseño de chat
 * Estructura del proyecto.
 
+
 ### ortografia
+
+en este proponemos un usuario para correguir la ortografia
 
 * FetchAPI
 * Post request
 * Crear un caso de uso
 * Interfaces para el tipado de la respuesta
 * Mostrar la respuesta como un mensaje de chat.
+
+### proscons 
+
+aca tenemos a un elemento que basado en 2 opciones me entrega un listado de pros y contras sobre lo que se le aplique, puntualmente se vera:
+
+* Streams
+* Funciones generadoras
+* Decoders
+* For await
+* AbortSignals
+
