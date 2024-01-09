@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { GptMessage, MyMessage, TextMessageBox, TypingLoader } from "../../components"
 import { orthographyMessageProps } from "../../../intenfaces"
+import { orthographyUseCase } from "../../../core/use-cases"
+import { GptOrthographyMessage } from "../../components/chat-bubbles/GptOrthographyMessage"
 
 export const OrthographyPage = () => {
   
@@ -11,9 +13,17 @@ export const OrthographyPage = () => {
   const hanlePost = async(text: string) => {
     setIsLoading(true)
     setMessages( (prev) => [...prev, {text, isGpt: false}])
-    // TODO: useCase 
+    
+     const resp = await orthographyUseCase(text)
+     if(!resp.ok)
+     {
+        setMessages( (prev) => [...prev, {text:'No se pudo realizar la correccion', isGpt: true}])
+     }
+     if(resp.ok)
+     {
+        setMessages( (prev) => [...prev, {text:resp.message, isGpt: true, info: {...resp}}])
+     }
     setIsLoading(false)
-    // TODO:  agregar  mensaje de respuesta de GPT
   }
 
   return (
@@ -24,7 +34,7 @@ export const OrthographyPage = () => {
           {
             messages.map((message, index) =>(
               message.isGpt ? (
-                <GptMessage key={index} text={message.text}/>         
+                <GptOrthographyMessage key={index} {...message.info!}/>         
               )
               : (
                 <MyMessage key={index} text={message.text} />
