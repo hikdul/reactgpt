@@ -39,3 +39,7 @@ aca tenemos a un elemento que basado en 2 opciones me entrega un listado de pros
 * For await
 * AbortSignals
 
+### traducciones
+
+este es una practica general de las anteriores donde aplico las ideas aprendidas para hacer un traductor basado en un selector de idiomas y asi obtener las traducciones esperadas.
+ 

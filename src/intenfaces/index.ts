@@ -9,4 +9,5 @@ export type {orthographyMessageProps}       from './orthographyMessageProps'
 export type {OrthographyResponse}           from './orthography-response'
 export type {OrthographyResponseData}       from './orthography-response'
 export type {ProsConsResponse}              from './pros-cons-response'
+export type {TranslateResponse}             from './translateResponse'
 
