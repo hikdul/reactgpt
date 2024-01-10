@@ -16,9 +16,8 @@ export const TranslatePage = () => {
     const newMessage = `traduce el siguiente texto "${text}" al siguiente idioma ${selectedOption}`
     setMessages( (prev) => [...prev, {text:newMessage, isGpt: false}])
     // TODO: useCase 
-    var resp = await translateUseCase(text,selectedOption)
+
     setIsLoading(false)
-    setMessages( (prev) => [...prev, {text:resp.message, isGpt: true}])
   }
 
   return (
