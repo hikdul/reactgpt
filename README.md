@@ -75,3 +75,4 @@ en esta seccion generamos un texto en base a un audio que se envia al backend
 ### audioTexto
 
 en esta rama construimos el front para agregar un archivo y enviarlo al sistema de backend y que este haga su magia.
+  nota: en esta parte es donde mi cuota de consumo aumento un monton. las anteriores practicas nome dieron tanto cosumo como esta. un ejemplo seria que el consume de las anteriores es de 4 a 5 peticiones a la api por .01$ y este es de .07$ por solicitud
