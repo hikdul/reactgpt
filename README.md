@@ -1,3 +1,7 @@
+<p align="center">
+  <a href="https://vitejs.dev/" target="blank"><img src="https://vitejs.dev/logo.svg" width="200" alt="Vite Logo" /></a>
+</p>
+
 # REACT GPT
  
  este sera el frontend para concretar de una manera agradable las practicas que tienen que ver con el uso de el paquete de npm de chat gtp y asi poder tener solo una base desde la cual realisar todas las pruebas necesarias.
@@ -67,3 +71,7 @@ este es una practica general de las anteriores donde aplico las ideas aprendidas
 ### textToAudio
 
 en esta seccion generamos un texto en base a un audio que se envia al backend
+
+### audioTexto
+
+en esta rama construimos el front para agregar un archivo y enviarlo al sistema de backend y que este haga su magia.
