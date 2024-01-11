@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { orthographyMessageProps } from "../../../intenfaces"
 import { GptMessage, MyMessage, TypingLoader, TextMessageBoxFile } from "../../components"
+import { audioToTextUseCase } from "../../../core/use-cases"
 
 export const AudioToTextPage = () => {
   
@@ -8,12 +9,39 @@ export const AudioToTextPage = () => {
   const [messages, setMessages] = useState<orthographyMessageProps[]>([])
   
   
-  const hanlePost = async(text: string) => {
+  const hanlePost = async(props:{text: string, file: File}) => {
+    const {text, file} = props
     setIsLoading(true)
     setMessages( (prev) => [...prev, {text, isGpt: false}])
     // TODO: useCase 
+    var resp = await audioToTextUseCase(file,text)
     setIsLoading(false)
-    // TODO:  agregar  mensaje de respuesta de GPT
+    if(!resp.ok) return;
+    
+    const gptResponse = `
+**Datos del Audio **
+--- 
+
+**Duracion:** ${Math.round(resp.duration)} sg
+
+**lenguaje:** ${resp.language}
+
+**texto:** ${resp.text}
+
+`
+    setMessages( (prev) => [...prev, {text: gptResponse, isGpt: true}])
+    
+    resp.segments.forEach(segment => {
+      const Smessage = `
+**De ${Math.round(segment.start)} sg hasta ${ Math.round(segment.end)} Segundos**
+---
+${segment.text}
+
+      `
+
+    setMessages( (prev) => [...prev, {text: Smessage, isGpt: true}])
+    });
+    
   }
 
   return (
@@ -46,6 +74,7 @@ export const AudioToTextPage = () => {
         onSendMessage={hanlePost} 
         placeholder="Pregunta pues!!"
         disableCorrections
+        accept="audio/*"
         />
 
     </div>

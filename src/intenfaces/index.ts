@@ -12,4 +12,5 @@ export type {ProsConsResponse}                          from './pros-cons-respon
 export type {TranslateResponse}                         from './translateResponse'
 export type {textToAudioProps}                          from './text-to-audio.props'
 export type {textToAudioResponse}                       from './text-to-audio.response'
+export type {AudioToTextResponse}              from './audio-to-text.response'
 

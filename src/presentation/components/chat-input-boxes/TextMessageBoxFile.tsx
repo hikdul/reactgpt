@@ -10,9 +10,16 @@ export const TextMessageBoxFile = ({accept, onSendMessage, placeholder, disableC
     
     const handleSendMessage = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        if(message.trim().length <= 0) return
-        onSendMessage(message)
+        //if(message.trim().length <= 0) retrn
+        if(!selectedFile) return
+        //? construllo el objeto con el que voy a enviar los datos
+        const props ={
+            text:message,
+            file:selectedFile
+        }
+        onSendMessage(props)
         setMessage('')
+        setSelectedFile(null)
     }
 
     return (
