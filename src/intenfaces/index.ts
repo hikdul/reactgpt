@@ -12,5 +12,8 @@ export type {ProsConsResponse}                          from './pros-cons-respon
 export type {TranslateResponse}                         from './translateResponse'
 export type {textToAudioProps}                          from './text-to-audio.props'
 export type {textToAudioResponse}                       from './text-to-audio.response'
-export type {AudioToTextResponse}              from './audio-to-text.response'
-
+export type {AudioToTextResponse}                       from './audio-to-text.response'
+export type {imageMessageProps, infoImageProps}         from './imageMessageProps'
+export type {imagePropsUseCase}                         from './image-props.use-case'
+export type { GeneratedImage,imageGPT}                  from './imageResponse'
+export type {gptImageMessageprops}                      from './getMessageImage.bubble'
