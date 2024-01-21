@@ -1,16 +1,23 @@
 
 import { useState } from "react"
 import { imageMessageProps } from "../../../intenfaces"
-import { GptMessage, GptMessageImage,  TextMessageBox, TypingLoader } from "../../components"
+import { GptMessage, GptMessageImage,  GptMessageImageSelected,  TextMessageBox, TypingLoader } from "../../components"
 import { imageGenerationUseCase, imageVariationUseCase } from "../../../core/use-cases"
 
 
 export const ImageTunningPage = () => {
   
   const [isLoading, setIsLoading] = useState<boolean>(false) 
-  const [messages, setMessages] = useState<imageMessageProps[]>([])
+  const [messages, setMessages] = useState<imageMessageProps[]>([{
+    text: 'imagen pruebas',
+    isGpt: true,
+    info: {
+      alt: 'imagen base',
+      imageUrl: 'http://localhost:3000/gpt/image-generation/1705838814279'
+    }
+  }])
   const [originalImageAndMask, setOriginalImageAndMask] = useState({
-  original:'http://localhost:3000/gpt/image-generation/1705838814279' as string | undefined,
+  original:undefined as string | undefined,
   mask: undefined as string | undefined
 })
 
@@ -36,7 +43,8 @@ export const ImageTunningPage = () => {
   const hanlePost = async(text: string) => {
     setIsLoading(true)
     setMessages( (prev) => [...prev, {text, isGpt: false}])
-    const resp = await imageGenerationUseCase({prompt:text})
+    const {original,mask} = originalImageAndMask
+    const resp = await imageGenerationUseCase({prompt:text,originalImage: original, maskImage: mask})
     setIsLoading(false)
     
     if(!resp)
@@ -60,7 +68,7 @@ export const ImageTunningPage = () => {
     {originalImageAndMask.original && (
       <div className="fixed flex flex-col item-center top-10 right-10 z-10 fade-in">
         <span>Editando</span>
-        <img className="border rounded-xl w-36 h-36 object-contain" src={originalImageAndMask.original} alt="imagen original"/>
+        <img className="border rounded-xl w-36 h-36 object-contain" src={originalImageAndMask.mask ?? originalImageAndMask.original} alt="imagen original"/>
         <button onClick={hanleVariation} className="btn-primary mt-2">Generated</button>
         
       </div>
@@ -71,10 +79,18 @@ export const ImageTunningPage = () => {
           
           <GptMessage  text="Hola, ingresa la descripcion de la imagen que deseas que te genere!!"/>         
           
+                {/* ? estos elementos son para la secceccion de imagenes. ! ==> <GptMessageImage key={index} text={message.text} imageUrl={message.info?.imageUrl} alt={message.info?.alt}onImageSelected={(url)=> setOriginalImageAndMask({  original: url,  mask: undefined})}/>*/}
           {
             messages.map((message, index) =>(
               message.isGpt ? (
-                <GptMessageImage key={index} text={message.text} imageUrl={message.info?.imageUrl} alt={message.info?.alt}/>
+                <GptMessageImageSelected 
+                  key={index} 
+                  text={message.text} 
+                  imageUrl={message.info?.imageUrl} 
+                  alt={message.info?.alt}
+                  onImageSelected={(url)=> setOriginalImageAndMask({  
+                    original: message.info?.imageUrl,  
+                    mask: url})}/>
                 )
                 : (
                 <GptMessage key={index} text={message.text}/>         

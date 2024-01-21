@@ -7,4 +7,5 @@ export * from './chat-input-boxes/TextMessageBox'
 export * from './chat-input-boxes/TextMessageBoxFile'
 export * from './chat-input-boxes/TextMessageBoxWhitSelect'
 export * from './chat-bubbles/GptMessageImage'
+export * from './chat-bubbles/GptMessageImageSelected'
 
