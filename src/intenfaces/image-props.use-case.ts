@@ -4,3 +4,8 @@ export interface imagePropsUseCase {
     originalImage?: string
     maskImage?: string
 }
+
+
+export interface imageVariationPropsUseCase {
+    originalImage: string
+}

@@ -1,6 +1,6 @@
 import { gptImageMessageprops } from "../../../intenfaces"
 
-export const GptMessageImage = ({imageUrl, alt}:gptImageMessageprops) => {
+export const GptMessageImage = ({imageUrl, alt, onImageSelected}:gptImageMessageprops) => {
   return (
     <div className="col-start-1 col-end-8 p-3 rounded-lg">
         <div className="flex flex-row items-start">
@@ -16,6 +16,7 @@ export const GptMessageImage = ({imageUrl, alt}:gptImageMessageprops) => {
                 src={imageUrl}
                 alt={alt}
                 className="mt-2 rounded-xl w-96 h-96 object-cover"
+                onClick={() => onImageSelected && onImageSelected(imageUrl!)}
                 />
             
             </div>
