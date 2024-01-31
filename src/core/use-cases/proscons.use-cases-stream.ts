@@ -11,8 +11,6 @@ export const ProsConsStreamUseCase = async (prompt: string): Promise<ReadableStr
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({prompt})
-            // TODO: mandar el abort signal
-
         })
         
         if(!resp.ok) throw new Error("algo salio mal en la peticion");
