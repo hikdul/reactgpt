@@ -37,15 +37,20 @@ export const AssistantPage = () => {
   
   
   const hanlePost = async(text: string) => {
+
     if(!threadId) return //! Generar un mensaje o algun dato que de informacion al cliente de que hacer en estos casos
     
     setIsLoading(true)
     setMessages( (prev) => [...prev, {text, isGpt: false}])
-    // TODO: useCase 
-    const replace = await postQuestionUseCase(threadId, text)
-    
+    const replaces = await postQuestionUseCase(threadId, text)
     setIsLoading(false)
-    // TODO:  agregar  mensaje de respuesta de GPT
+    // ~ limpio los mensajes
+    setMessages([])
+    // ~ Lleno todos los mensajes nuevamente.
+    for (const reply of replaces) 
+      for (const message of reply.content) {
+        setMessages( (prev) => [...prev,{text: message, isGpt: (reply.role === 'assistant')}])
+      }
   }
 
   return (
