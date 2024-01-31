@@ -17,4 +17,4 @@ export type {imageMessageProps, infoImageProps}             from './imageMessage
 export type {imagePropsUseCase, imageVariationPropsUseCase} from './image-props.use-case'
 export type { GeneratedImage,imageGPT}                      from './imageResponse'
 export type {gptImageMessageprops}                          from './getMessageImage.bubble'
- 
+export type {AssistanResponse}                              from './assistant.response'
